@@ -5,15 +5,24 @@ class UsersController < Devise::SessionsController
   end
 
   def index
+    if not user_signed_in?
+      return redirect_to root_path
+    end
     @users = User.page(params[:page]).reverse_order
   end
 
   def show
+    if not user_signed_in?
+      return redirect_to root_path
+    end
     @user = User.find(params[:id])
     @books = @user.books.page(params[:page]).reverse_order
   end
 
   def edit
+    if not user_signed_in?
+      return redirect_to root_path
+    end
     @user = User.find(params[:id])
     render layout: 'no_left'
   end
