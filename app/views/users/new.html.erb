@@ -1,7 +1,4 @@
 <h2>Log in</h2>
-<%- flash.each do |name, msg| -%>
-  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-<%- end -%> 
 
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   <div class="field">

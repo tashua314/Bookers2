@@ -1,9 +1,4 @@
-<div class="profile-container">
-  <h3 class="profile-name"><%= @user.name %></h3>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <%= image_tag('sample-author1.jpg', style: "width: 100px;") %>
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <%= render 'books/list', books: @books %>
 </div>
-<%= render 'post_images/list', post_images: @post_images %>

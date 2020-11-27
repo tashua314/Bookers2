@@ -1,11 +1,16 @@
-class UsersController < ApplicationController
+class UsersController < Devise::SessionsController
+  def new
+    super
+    render layout: 'no_left'
+  end
+
   def index
     @users = User.page(params[:page]).reverse_order
   end
 
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images.page(params[:page]).reverse_order
+    @books = @user.books.page(params[:page]).reverse_order
   end
 
   def edit
@@ -15,8 +20,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)  end
+    if @user.update(user_params)
+      flash[:notice] = 'You have updated user successfully.'
+      redirect_to user_path(@user.id)
+    else
+    render :edit, layout: 'no_left'
+    end
+  end
 
   private
 

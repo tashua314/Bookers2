@@ -9,15 +9,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body>
     <%= render 'layouts/header' %>
-    <main class="mb-auto">
+    <main>
       <p id="notice"></p>
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-            <%= yield %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+              <%= yield %>
+            </div>
+          <% end %>
         </div>
       </div>
     </main>
