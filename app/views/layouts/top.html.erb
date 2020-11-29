@@ -15,15 +15,9 @@
       <p id="notice"><%= flash[:notice] %></p>
       <div class="container">
         <div class="row">
-          <% if user_signed_in? %>
-            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-              <%= yield %>
-            </div>
-          <% else %>
-            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-              <%= yield %>
-            </div>
-          <% end %>
+          <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </main>
