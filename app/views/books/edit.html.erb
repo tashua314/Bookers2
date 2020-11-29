@@ -1,5 +1,7 @@
 <h1>Editing Book</h1>
 
+<%= render "devise/shared/error_messages", resource: @book %>
+
 <%= form_with model:@book, local:true do |f| %>
   <div class="form-group">
     <%= f.label :title %><br />
@@ -14,4 +16,4 @@
   </div>
 <% end %>
 <%= link_to "Show", book_path(@book) %> |
-<%= link_to "back", books_path %>
+<%= link_to "Back", books_path %>

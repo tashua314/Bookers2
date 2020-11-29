@@ -2,27 +2,27 @@
   <% if user_signed_in? %>
     <%= render "devise/shared/error_messages", resource: @book %>
     <h2>User info</h2>
-    <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
     <table class="table">
       <tbody>
         <tr></tr>
         <tr>
           <th>name</th>
-          <th><%= current_user.name %></th>
+          <th><%= user.name %></th>
         </tr>
         <tr>
           <th>introduction</th>
-          <th><%= current_user.introduction %></th>
+          <th><%= user.introduction %></th>
         </tr>
       </tbody>
     </table>
     　
     <div class="row">
-      <%= link_to "", edit_user_path(current_user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
+      <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
     </div>
 
     <h2 class="mt-3">New book</h2>
-    <%= form_with model: @book, local:true do |f| %>
+    <%= form_with model: Book.new, local:true do |f| %>
       <div class="form-group">
         <%= f.label :title %><br />
         <%= f.text_field :title, class:"form-control", placeholder:"タイトル" %>
